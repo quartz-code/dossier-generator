@@ -296,20 +296,20 @@
 .neuro-part-eyes {
     width: 100%; height: 100%;
     left: 0; top: 0;
-    background-size: 55%;
+    background-size: 60%;
     background-position: center 42%;
 }
 .neuro-part-nose {
     width: 100%; height: 100%;
     left: 0; top: 0;
-    background-size: 22%;
-    background-position: center 58%;
+    background-size: 24%;
+    background-position: center 60%;
 }
 .neuro-part-mouth {
     width: 100%; height: 100%;
     left: 0; top: 0;
-    background-size: 32%;
-    background-position: center 70%;
+    background-size: 34%;
+    background-position: center 74%;
 }
 
 .fr-neuro-text {
