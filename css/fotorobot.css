@@ -274,39 +274,44 @@
     background: #fdfdfc; /* Clean paper background for sketches */
     border-radius: 6px;
 }
+/* True Constructor layout */
 .fr-neuro-layer {
     position: absolute;
     background-repeat: no-repeat;
+    mix-blend-mode: multiply; /* This removes the white backgrounds perfectly */
 }
 /* Gallery uses full cover */
 .fr-neuro-layer.gallery-mode {
     top: 0; left: 0; right: 0; bottom: 0;
     background-size: cover;
     background-position: center;
+    mix-blend-mode: normal; /* Gallery shouldn't multiply */
 }
 
-/* True Constructor layout */
 .neuro-part-face {
     top: 0; left: 0; right: 0; bottom: 0;
     background-size: cover;
     background-position: center;
 }
 .neuro-part-eyes {
-    width: 70%; height: 20%;
-    left: 15%; top: 35%;
-    background-size: contain;
+    /* Eyes image is 3:4. Let's make it cover the face but scale it down slightly and move it up */
+    width: 100%; height: 100%;
+    left: 0; top: -12%;
+    background-size: 80%;
     background-position: center;
 }
 .neuro-part-nose {
-    width: 34%; height: 20%;
-    left: 33%; top: 50%;
-    background-size: contain;
+    /* Nose image is 1:1. Scale it down to look like a nose and place in middle */
+    width: 100%; height: 100%;
+    left: 0; top: 12%;
+    background-size: 45%;
     background-position: center;
 }
 .neuro-part-mouth {
-    width: 44%; height: 16%;
-    left: 28%; top: 68%;
-    background-size: contain;
+    /* Mouth image is 1:1. Move it down */
+    width: 100%; height: 100%;
+    left: 0; top: 32%;
+    background-size: 45%;
     background-position: center;
 }
 
