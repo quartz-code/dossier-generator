@@ -103,7 +103,7 @@ const Fotorobot = (() => {
       `;
     } else if (currentMode === 'collage') {
       // New Constructor mode
-      const NEURO_PARTS = 2; // Due to generation limits we only have 2 options for parts
+      const NEURO_PARTS = 6; // We generated 4 extra parts from bases!
       const bFace = (draft.face % NEURO_PARTS) + 1;
       const bEyes = (draft.eyes % NEURO_PARTS) + 1;
       const bNose = (draft.nose % NEURO_PARTS) + 1;
@@ -142,10 +142,10 @@ const Fotorobot = (() => {
       }
       
       const lib = FaceParts.LIBRARY[cat];
-      // Use 4 for gallery, 2 for parts due to generation limits
+      // Use 4 for gallery, 6 for parts
       let len = lib.length;
       if (currentMode === 'gallery') len = 4;
-      if (currentMode === 'collage') len = 2;
+      if (currentMode === 'collage') len = 6;
       const i = draft[cat] % len;
       
       const thumbEl = document.getElementById(`fr-thumb-${cat}`);
