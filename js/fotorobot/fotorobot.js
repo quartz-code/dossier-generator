@@ -235,6 +235,11 @@ const Fotorobot = (() => {
             Соберите облик подозреваемого из черт — обычных и не очень. Сохраните
             в архив, и фигурант появится в картотеке.
           </p>
+          <div class="fr-tabs-container">
+            <button class="fr-tab ${currentMode === 'svg' ? 'active' : ''}" data-tab="svg" onclick="Fotorobot.setMode('svg')">Классика (SVG)</button>
+            <button class="fr-tab ${currentMode === 'collage' ? 'active' : ''}" data-tab="collage" onclick="Fotorobot.setMode('collage')">Нейро-Коллаж</button>
+            <button class="fr-tab ${currentMode === 'gallery' ? 'active' : ''}" data-tab="gallery" onclick="Fotorobot.setMode('gallery')">Нейро-Галерея</button>
+          </div>
           <div class="fr-divider">
             <span class="fr-divider-line"></span>
             <span class="fr-divider-dot"></span>
