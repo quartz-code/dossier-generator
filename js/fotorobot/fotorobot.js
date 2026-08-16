@@ -44,7 +44,7 @@ const Fotorobot = (() => {
     draft = {
       face: r(6), hair: r(10), brows: r(6), eyes: r(8),
       nose: r(5), mouth: r(7), beard: r(5), ears: r(3),
-      accessory: r(8), mythos: r(7),
+      scars: r(8), accessory: r(8), hats: r(7), mythos: r(7),
       skinTone: draft.skinTone, hairColor: draft.hairColor,
     };
     updateCanvas();

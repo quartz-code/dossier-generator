@@ -113,10 +113,33 @@ const FaceParts = (() => {
     () => `<g fill="none" stroke="${ELDRITCH}" stroke-width="2" stroke-linecap="round" opacity="0.85"><path d="M200 110 L 200 140"/><path d="M188 120 L 212 120"/><circle cx="200" cy="128" r="8"/><circle cx="200" cy="128" r="2" fill="${ELDRITCH}"/></g>`,
   ];
 
+  // ===================== SCARS (8) =====================
+  const SCARS = [
+    () => '',
+    () => `<g opacity="0.7"><path d="M140 280 L 160 320" stroke="oklch(0.5 0.1 20)" stroke-width="2" stroke-linecap="round"/><path d="M142 290 L 150 288 M 148 300 L 156 298 M 154 310 L 162 308" stroke="oklch(0.4 0.1 20)" stroke-width="1.5"/></g>`,
+    () => `<g opacity="0.7"><path d="M220 160 L 250 210" stroke="oklch(0.5 0.1 20)" stroke-width="2" stroke-linecap="round"/><path d="M225 175 L 235 170 M 235 190 L 245 185" stroke="oklch(0.4 0.1 20)" stroke-width="1.5"/></g>`,
+    () => `<g><rect x="180" y="240" width="40" height="15" rx="2" fill="oklch(0.9 0.02 80)" stroke="oklch(0.7 0.02 80)" transform="rotate(-5 200 245)"/><rect x="185" y="242" width="10" height="11" fill="oklch(0.8 0.02 80)" transform="rotate(-5 200 245)"/></g>`,
+    () => `<g><circle cx="230" cy="360" r="3" fill="oklch(0.2 0.05 40)"/><circle cx="230" cy="359" r="1" fill="oklch(0.3 0.05 40)"/></g>`,
+    () => `<g><path d="M135 228 C 150 240, 165 240, 175 228" fill="none" stroke="oklch(0.1 0.1 300)" stroke-width="8" stroke-linecap="round" opacity="0.1"/><path d="M225 228 C 235 240, 250 240, 265 228" fill="none" stroke="oklch(0.1 0.1 300)" stroke-width="8" stroke-linecap="round" opacity="0.1"/></g>`,
+    () => `<text x="135" y="280" font-family="monospace" font-size="14" fill="oklch(0.2 0.1 240)" opacity="0.6" transform="rotate(15 135 280)">138</text>`,
+    () => `<g opacity="0.7"><path d="M200 120 L 190 140 L 210 140 Z M200 110 L 200 150 M 185 130 L 215 130" fill="none" stroke="oklch(0.4 0.1 30)" stroke-width="2"/></g>`,
+  ];
+
+  // ===================== HATS (7) =====================
+  const HATS = [
+    () => '',
+    () => `<g><path d="M110 135 C 150 145, 250 145, 290 135 C 310 130, 320 140, 310 150 C 270 160, 130 160, 90 150 C 80 140, 90 130, 110 135 Z" fill="oklch(0.2 0.02 40)" stroke="oklch(0.1 0.02 40)" stroke-width="2"/><path d="M130 138 C 130 60, 270 60, 270 138 Z" fill="oklch(0.2 0.02 40)" stroke="oklch(0.1 0.02 40)" stroke-width="2"/><path d="M130 120 C 150 130, 250 130, 270 120 L 270 135 C 250 145, 150 145, 130 135 Z" fill="oklch(0.1 0.02 40)"/><path d="M150 65 C 180 80, 220 80, 250 65" fill="none" stroke="oklch(0.1 0.02 40)" stroke-width="2"/></g>`,
+    () => `<g><path d="M110 140 C 130 150, 270 150, 290 140 C 310 130, 280 120, 250 120 C 250 80, 150 80, 150 120 C 120 120, 90 130, 110 140 Z" fill="oklch(0.3 0.02 60)" stroke="oklch(0.15 0.02 60)" stroke-width="2"/><circle cx="200" cy="85" r="4" fill="oklch(0.15 0.02 60)"/></g>`,
+    () => `<g><path d="M110 145 C 150 160, 250 160, 290 145 C 310 140, 270 120, 200 120 C 130 120, 90 140, 110 145 Z" fill="oklch(0.1 0.02 240)" stroke="oklch(0.05 0.02 240)" stroke-width="2"/><path d="M125 125 C 110 80, 290 80, 275 125 Z" fill="oklch(0.25 0.05 130)" stroke="oklch(0.15 0.05 130)" stroke-width="2"/><rect x="123" y="115" width="154" height="15" fill="oklch(0.1 0.02 240)" stroke="oklch(0.05 0.02 240)" stroke-width="1"/><circle cx="200" cy="115" r="8" fill="oklch(0.8 0.1 80)" stroke="oklch(0.6 0.1 80)" stroke-width="1"/><path d="M125 122 C 160 132, 240 132, 275 122" fill="none" stroke="oklch(0.8 0.1 80)" stroke-width="2"/></g>`,
+    () => `<g><path d="M120 130 C 120 70, 280 70, 280 130 C 290 130, 300 160, 290 200 C 280 230, 270 230, 270 200 L 270 135 L 130 135 L 130 200 C 130 230, 120 230, 110 200 C 100 160, 110 130, 120 130 Z" fill="oklch(0.35 0.03 70)" stroke="oklch(0.2 0.03 70)" stroke-width="2" stroke-linejoin="round"/><path d="M140 135 C 140 100, 260 100, 260 135 Z" fill="oklch(0.25 0.03 70)" stroke="oklch(0.2 0.03 70)" stroke-width="2"/><path d="M140 135 L 260 135" fill="none" stroke="oklch(0.2 0.03 70)" stroke-width="2"/><path d="M160 115 L 240 115 M115 160 L 125 160 M275 160 L 285 160" stroke="oklch(0.2 0.03 70)" stroke-width="1" stroke-dasharray="2 3"/></g>`,
+    () => `<path d="M170 80 C 100 80, 80 150, 90 230 C 95 270, 110 320, 150 350 L 150 420 L 250 420 L 250 350 C 290 320, 305 270, 310 230 C 320 150, 300 80, 230 80 Z M 190 100 C 240 100, 270 140, 275 220 C 275 290, 240 330, 190 330 C 140 330, 105 290, 105 220 C 110 140, 140 100, 190 100 Z" fill="oklch(0.18 0.01 40)" stroke="oklch(0.1 0.01 40)" stroke-width="2" fill-rule="evenodd"/>`,
+    () => `<g><path d="M125 105 C 160 120, 240 120, 275 105 L 280 135 C 240 150, 160 150, 120 135 Z" fill="oklch(0.9 0.01 90)" stroke="oklch(0.6 0.02 90)" stroke-width="1.5"/><path d="M123 120 C 160 135, 240 135, 277 120" fill="none" stroke="oklch(0.7 0.02 90)" stroke-width="1"/><path d="M220 115 A 8 8 0 0 1 240 125" fill="none" stroke="oklch(0.5 0.15 30)" stroke-width="4" opacity="0.6"/></g>`,
+  ];
+
   const LIBRARY = {
     face: FACE, ears: EARS, hair: HAIR, brows: BROWS,
     eyes: EYES, nose: NOSE, mouth: MOUTH, beard: BEARD,
-    accessory: ACCESSORY, mythos: MYTHOS,
+    scars: SCARS, accessory: ACCESSORY, hats: HATS, mythos: MYTHOS,
   };
 
   const LABELS = {
@@ -128,11 +151,13 @@ const FaceParts = (() => {
     mouth: { name: 'Рот', glyph: 'VI' },
     beard: { name: 'Борода', glyph: 'VII' },
     ears: { name: 'Уши', glyph: 'VIII' },
-    accessory: { name: 'Аксессуар', glyph: 'IX' },
+    scars: { name: 'Особые приметы', glyph: 'IX' },
+    accessory: { name: 'Очки / Маски', glyph: 'X' },
+    hats: { name: 'Головные уборы', glyph: 'XI' },
     mythos: { name: 'Искажение', glyph: '✷' },
   };
 
-  const CATEGORY_ORDER = ['face', 'hair', 'brows', 'eyes', 'nose', 'mouth', 'beard', 'ears', 'accessory', 'mythos'];
+  const CATEGORY_ORDER = ['face', 'hair', 'brows', 'eyes', 'nose', 'mouth', 'beard', 'ears', 'scars', 'accessory', 'hats', 'mythos'];
   const SKIN_TONES = ['#f1c9a5', '#e0b58a', '#c68642', '#8d5524', '#ffdbac', '#d4a373', '#9e7455', '#6b4f3a', '#a8c4a2', '#b9a7d9'];
   const HAIR_COLORS = ['#1a1410', '#3a2418', '#5a3a1f', '#8b6b3a', '#c9a961', '#d9d2c5', '#7a2d2d', '#2d4a3a', '#4a2d6b', '#8a8a8a'];
 
@@ -151,7 +176,9 @@ const FaceParts = (() => {
     mouth: { x: 160, y: 310, w: 80, h: 60 },
     beard: { x: 130, y: 300, w: 140, h: 130 },
     ears: { x: 75, y: 195, w: 250, h: 110 },
+    scars: { x: 120, y: 120, w: 160, h: 260 },
     accessory: { x: 95, y: 80, w: 210, h: 180 },
+    hats: { x: 70, y: 40, w: 260, h: 220 },
     mythos: { x: 95, y: 80, w: 210, h: 350 },
   };
 
@@ -178,7 +205,9 @@ const FaceParts = (() => {
     if (face.mythos === 3) layers += idx(MYTHOS, 3)(c);
     layers += idx(EARS, face.ears)(c);
     layers += idx(FACE, face.face)(c);
+    layers += idx(SCARS, face.scars)(c);
     layers += idx(HAIR, face.hair)(c);
+    layers += idx(HATS, face.hats)(c);
     layers += idx(BROWS, face.brows)(c);
     layers += idx(EYES, face.eyes)(c);
     layers += idx(NOSE, face.nose)(c);
@@ -207,7 +236,7 @@ const FaceParts = (() => {
 
   const DEFAULT_FACE = {
     face: 0, hair: 0, brows: 0, eyes: 0, nose: 0, mouth: 0,
-    beard: 0, ears: 0, accessory: 0, mythos: 0,
+    beard: 0, ears: 0, scars: 0, accessory: 0, hats: 0, mythos: 0,
     skinTone: '#e0b58a', hairColor: '#3a2418',
   };
 
