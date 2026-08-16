@@ -294,24 +294,21 @@
     background-position: center;
 }
 .neuro-part-eyes {
-    /* Eyes image is 3:4. Let's make it cover the face but scale it down slightly and move it up */
     width: 100%; height: 100%;
-    left: 0; top: -12%;
-    background-size: 80%;
+    left: 0; top: 2%;
+    background-size: 90%;
     background-position: center;
 }
 .neuro-part-nose {
-    /* Nose image is 1:1. Scale it down to look like a nose and place in middle */
     width: 100%; height: 100%;
-    left: 0; top: 12%;
-    background-size: 45%;
+    left: 0; top: 18%;
+    background-size: 55%;
     background-position: center;
 }
 .neuro-part-mouth {
-    /* Mouth image is 1:1. Move it down */
     width: 100%; height: 100%;
-    left: 0; top: 32%;
-    background-size: 45%;
+    left: 0; top: 38%;
+    background-size: 55%;
     background-position: center;
 }
 
