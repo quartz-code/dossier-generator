@@ -5,6 +5,8 @@ const Fotorobot = (() => {
   let draft = { ...FaceParts.DEFAULT_FACE };
   let suspects = [];
   let editingId = null;
+  let currentMode = 'svg'; // 'svg', 'collage', 'gallery'
+  const NEURO_BASES = 4;
   const STORAGE_KEY = 'fotorobot_suspects';
 
   function init() {
@@ -64,22 +66,90 @@ const Fotorobot = (() => {
     updateControls();
   }
 
+  function setMode(mode) {
+    currentMode = mode;
+    // Update tab UI
+    document.querySelectorAll('.fr-tab').forEach(t => {
+      if (t.dataset.tab === mode) t.classList.add('active');
+      else t.classList.remove('active');
+    });
+    
+    // Hide color pickers if not SVG
+    const colorsGrid = document.querySelector('.fr-colors-grid');
+    if (colorsGrid) {
+      colorsGrid.style.display = (mode === 'svg') ? 'grid' : 'none';
+    }
+
+    updateCanvas();
+    updateControls();
+  }
+
   function updateCanvas() {
     const wrap = document.getElementById('fr-canvas');
     if (!wrap) return;
-    wrap.innerHTML = FaceParts.renderFace(draft, 320);
+    
+    if (currentMode === 'svg') {
+      wrap.innerHTML = FaceParts.renderFace(draft, 320);
+    } else if (currentMode === 'gallery') {
+      const bFace = (draft.face % NEURO_BASES) + 1;
+      wrap.innerHTML = `
+        <div class="fr-neuro-wrap">
+          <div class="fr-neuro-layer" style="background-image: url('assets/neuro/base_${bFace}.jpg');"></div>
+          <div class="fr-neuro-text">ARKHAM P.D. · NEURO-GALLERY №${bFace}</div>
+        </div>
+      `;
+    } else if (currentMode === 'collage') {
+      const bFace = (draft.face % NEURO_BASES) + 1;
+      const bEyes = (draft.eyes % NEURO_BASES) + 1;
+      const bNose = (draft.nose % NEURO_BASES) + 1;
+      const bMouth = (draft.mouth % NEURO_BASES) + 1;
+      
+      wrap.innerHTML = `
+        <div class="fr-neuro-wrap">
+          <div class="fr-neuro-layer" style="background-image: url('assets/neuro/base_${bFace}.jpg');"></div>
+          <div class="fr-neuro-layer collage-part fr-clip-eyes" style="background-image: url('assets/neuro/base_${bEyes}.jpg');"></div>
+          <div class="fr-neuro-layer collage-part fr-clip-nose" style="background-image: url('assets/neuro/base_${bNose}.jpg');"></div>
+          <div class="fr-neuro-layer collage-part fr-clip-mouth" style="background-image: url('assets/neuro/base_${bMouth}.jpg');"></div>
+          <div class="fr-neuro-text">ARKHAM P.D. · NEURO-COLLAGE</div>
+        </div>
+      `;
+    }
+    
     const numEl = document.getElementById('fr-case-number');
     if (numEl) numEl.textContent = '№ ' + (Math.abs(FaceParts.hashFace(draft)) % 9000 + 1000);
   }
 
   function updateControls() {
     const colors = { skin: draft.skinTone, hair: draft.hairColor };
+    
     FaceParts.CATEGORY_ORDER.forEach(cat => {
+      const row = document.getElementById(`fr-row-${cat}`);
+      // Visibility logic
+      if (row) {
+        if (currentMode === 'gallery') {
+          row.style.display = (cat === 'face') ? 'flex' : 'none';
+        } else if (currentMode === 'collage') {
+          const allowed = ['face', 'eyes', 'nose', 'mouth'];
+          row.style.display = allowed.includes(cat) ? 'flex' : 'none';
+        } else {
+          row.style.display = 'flex';
+        }
+      }
+      
       const lib = FaceParts.LIBRARY[cat];
-      const len = lib.length;
-      const i = draft[cat];
+      const len = (currentMode === 'svg') ? lib.length : NEURO_BASES;
+      const i = draft[cat] % len;
+      
       const thumbEl = document.getElementById(`fr-thumb-${cat}`);
-      if (thumbEl) thumbEl.innerHTML = FaceParts.renderThumb(cat, i, colors);
+      if (thumbEl) {
+        if (currentMode === 'svg') {
+          thumbEl.innerHTML = FaceParts.renderThumb(cat, i, colors);
+        } else {
+          const bgId = (draft[cat] % NEURO_BASES) + 1;
+          thumbEl.innerHTML = `<div style="width:100%; height:100%; border-radius:4px; background-image:url('assets/neuro/base_${bgId}.jpg'); background-size:cover; background-position:center;"></div>`;
+        }
+      }
+      
       const counterEl = document.getElementById(`fr-counter-${cat}`);
       if (counterEl) counterEl.textContent = `${i + 1}/${len}`;
     });
@@ -122,7 +192,7 @@ const Fotorobot = (() => {
     const colors = { skin: draft.skinTone, hair: draft.hairColor };
 
     return `
-      <div class="fr-part-row">
+      <div class="fr-part-row" id="fr-row-${cat}">
         <div class="fr-part-thumb" id="fr-thumb-${cat}">
           ${FaceParts.renderThumb(cat, i, colors)}
         </div>
@@ -454,7 +524,7 @@ const Fotorobot = (() => {
   }
 
   return {
-    init, render, randomize, reset, cycle, setColor, exportPng,
+    init, render, randomize, reset, cycle, setMode, setColor, exportPng,
     openSave, closeSave, saveSuspect, loadSuspect, deleteSuspect,
     showToast,
   };

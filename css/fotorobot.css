@@ -36,8 +36,38 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
     max-width: 540px;
-    margin: 8px auto 0;
+    margin: 8px auto 16px;
     line-height: 1.5;
+}
+
+/* Tabs */
+.fr-tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+.fr-tab {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.fr-tab:hover {
+    border-color: var(--fr-gold);
+    color: var(--text-primary);
+}
+.fr-tab.active {
+    background: rgba(201, 169, 97, 0.15);
+    border-color: var(--fr-gold);
+    color: var(--fr-gold);
+    text-shadow: 0 0 10px rgba(201, 169, 97, 0.4);
 }
 
 /* Divider */
@@ -232,7 +262,43 @@
     border-radius: 6px;
     background: var(--fr-paper);
     overflow: hidden;
+    transition: opacity 0.3s;
 }
+
+/* Neuro Canvas & Collage */
+.fr-neuro-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%; /* 400x500 aspect ratio */
+    overflow: hidden;
+    background: #000;
+}
+.fr-neuro-layer {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+}
+/* Mix blend mode for creepy collage effect */
+.fr-neuro-layer.collage-part {
+    mix-blend-mode: screen; /* Since images are grayscale/b&w, screen or multiply might work, but let's just use clip-path to avoid extreme darkness */
+}
+/* Clip paths for facial features */
+.fr-clip-eyes { clip-path: polygon(20% 38%, 80% 38%, 80% 50%, 20% 50%); mix-blend-mode: hard-light; }
+.fr-clip-nose { clip-path: polygon(38% 48%, 62% 48%, 62% 65%, 38% 65%); mix-blend-mode: hard-light; }
+.fr-clip-mouth { clip-path: polygon(30% 64%, 70% 64%, 70% 75%, 30% 75%); mix-blend-mode: hard-light; }
+.fr-clip-scars { clip-path: polygon(10% 20%, 90% 20%, 90% 80%, 10% 80%); mix-blend-mode: overlay; opacity: 0.7; }
+.fr-clip-hats { clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%); }
+
+.fr-neuro-text {
+    position: absolute;
+    bottom: 15px;
+    font-family: monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    text-shadow: 0 1px 2px #000;
+}
+
 .fr-thumb-svg { width: 44px; height: 44px; }
 .fr-part-info { flex: 1; min-width: 0; }
 .fr-part-header {
