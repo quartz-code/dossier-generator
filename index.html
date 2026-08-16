@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/templates/hq_reich.css">
     <link rel="stylesheet" href="css/templates/hq_american.css">
     <link rel="stylesheet" href="css/templates/ids.css">
+    <link rel="stylesheet" href="css/fotorobot.css">
 </head>
 <body>
     <!-- STYLE SELECTOR SCREEN -->
@@ -37,11 +38,20 @@
                     <button class="tab-btn" data-category="ids">Удостоверения</button>
                     <button class="tab-btn" data-category="specialist">Специалисты</button>
                 </div>
+                <button class="fr-nav-btn" onclick="App.goToFotorobot()">
+                    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 60 C 35 25, 85 25, 110 60 C 85 95, 35 95, 10 60 Z"/><circle cx="60" cy="60" r="20"/><circle cx="60" cy="60" r="9" fill="currentColor" stroke="none"/></svg>
+                    Фоторобот
+                </button>
             </header>
             <div class="cards-grid" id="style-cards">
                 <!-- Cards injected by JS -->
             </div>
         </div>
+    </div>
+
+    <!-- FOTOROBOT SCREEN -->
+    <div id="fotorobot-screen" class="screen">
+        <!-- Content injected by Fotorobot.init() -->
     </div>
 
     <!-- EDITOR SCREEN -->
@@ -127,6 +137,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/fotorobot/face-parts.js"></script>
+    <script src="js/fotorobot/fotorobot.js"></script>
     <script src="js/templates/soviet.js"></script>
     <script src="js/templates/reich.js"></script>
     <script src="js/templates/american.js"></script>

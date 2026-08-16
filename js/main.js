@@ -31,6 +31,7 @@ const App = {
 
         this.renderStyleCards();
         this.bindEvents();
+        Fotorobot.init();
     },
 
     renderStyleCards() {
@@ -135,18 +136,50 @@ const App = {
 
         const selectorScreen = document.getElementById('selector-screen');
         const editorScreen = document.getElementById('editor-screen');
+        const fotorobotScreen = document.getElementById('fotorobot-screen');
+
+        // Hide whichever screen is currently active
+        const activeScreen = editorScreen.classList.contains('active') 
+            ? editorScreen 
+            : fotorobotScreen.classList.contains('active') 
+                ? fotorobotScreen 
+                : null;
+
+        if (!activeScreen) return;
         
-        editorScreen.style.transition = 'opacity 0.35s ease';
-        editorScreen.style.opacity = '0';
+        activeScreen.style.transition = 'opacity 0.35s ease';
+        activeScreen.style.opacity = '0';
         
         setTimeout(() => {
-            editorScreen.classList.remove('active');
+            activeScreen.classList.remove('active');
             selectorScreen.classList.add('active');
             selectorScreen.style.opacity = '0';
             selectorScreen.style.transition = 'opacity 0.35s ease';
             
             requestAnimationFrame(() => {
                 selectorScreen.style.opacity = '1';
+            });
+        }, 350);
+    },
+
+    goToFotorobot() {
+        const selectorScreen = document.getElementById('selector-screen');
+        const editorScreen = document.getElementById('editor-screen');
+        const fotorobotScreen = document.getElementById('fotorobot-screen');
+
+        // Hide whichever screen is active
+        const activeScreen = selectorScreen.classList.contains('active') ? selectorScreen : editorScreen;
+        activeScreen.style.transition = 'opacity 0.35s ease';
+        activeScreen.style.opacity = '0';
+
+        setTimeout(() => {
+            activeScreen.classList.remove('active');
+            fotorobotScreen.classList.add('active');
+            fotorobotScreen.style.opacity = '0';
+            fotorobotScreen.style.transition = 'opacity 0.35s ease';
+            Fotorobot.init();
+            requestAnimationFrame(() => {
+                fotorobotScreen.style.opacity = '1';
             });
         }, 350);
     },
