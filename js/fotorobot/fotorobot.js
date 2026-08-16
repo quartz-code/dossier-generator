@@ -91,26 +91,31 @@ const Fotorobot = (() => {
     if (currentMode === 'svg') {
       wrap.innerHTML = FaceParts.renderFace(draft, 320);
     } else if (currentMode === 'gallery') {
+      // Old Gallery mode just uses the base portraits (which we kept in assets/neuro)
+      // wait, the bases might still be there, let's use the parts! 
+      // We didn't delete the bases, but it's cleaner to keep Gallery as it was.
       const bFace = (draft.face % NEURO_BASES) + 1;
       wrap.innerHTML = `
         <div class="fr-neuro-wrap">
-          <div class="fr-neuro-layer" style="background-image: url('assets/neuro/base_${bFace}.jpg');"></div>
-          <div class="fr-neuro-text">ARKHAM P.D. · NEURO-GALLERY №${bFace}</div>
+          <div class="fr-neuro-layer gallery-mode" style="background-image: url('assets/neuro/base_${bFace}.jpg');"></div>
+          <div class="fr-neuro-text" style="color:rgba(255,255,255,0.7); text-shadow:0 1px 2px #000;">ARKHAM P.D. · NEURO-GALLERY №${bFace}</div>
         </div>
       `;
     } else if (currentMode === 'collage') {
-      const bFace = (draft.face % NEURO_BASES) + 1;
-      const bEyes = (draft.eyes % NEURO_BASES) + 1;
-      const bNose = (draft.nose % NEURO_BASES) + 1;
-      const bMouth = (draft.mouth % NEURO_BASES) + 1;
+      // New Constructor mode
+      const NEURO_PARTS = 2; // Due to generation limits we only have 2 options for parts
+      const bFace = (draft.face % NEURO_PARTS) + 1;
+      const bEyes = (draft.eyes % NEURO_PARTS) + 1;
+      const bNose = (draft.nose % NEURO_PARTS) + 1;
+      const bMouth = (draft.mouth % NEURO_PARTS) + 1;
       
       wrap.innerHTML = `
         <div class="fr-neuro-wrap">
-          <div class="fr-neuro-layer" style="background-image: url('assets/neuro/base_${bFace}.jpg');"></div>
-          <div class="fr-neuro-layer collage-part fr-clip-eyes" style="background-image: url('assets/neuro/base_${bEyes}.jpg');"></div>
-          <div class="fr-neuro-layer collage-part fr-clip-nose" style="background-image: url('assets/neuro/base_${bNose}.jpg');"></div>
-          <div class="fr-neuro-layer collage-part fr-clip-mouth" style="background-image: url('assets/neuro/base_${bMouth}.jpg');"></div>
-          <div class="fr-neuro-text">ARKHAM P.D. · NEURO-COLLAGE</div>
+          <div class="fr-neuro-layer neuro-part-face" style="background-image: url('assets/neuro/parts/face_${bFace}.png');"></div>
+          <div class="fr-neuro-layer neuro-part-eyes" style="background-image: url('assets/neuro/parts/eyes_${bEyes}.png');"></div>
+          <div class="fr-neuro-layer neuro-part-nose" style="background-image: url('assets/neuro/parts/nose_${bNose}.png');"></div>
+          <div class="fr-neuro-layer neuro-part-mouth" style="background-image: url('assets/neuro/parts/mouth_${bMouth}.png');"></div>
+          <div class="fr-neuro-text">ARKHAM P.D. · NEURO-CONSTRUCTOR</div>
         </div>
       `;
     }
@@ -137,16 +142,22 @@ const Fotorobot = (() => {
       }
       
       const lib = FaceParts.LIBRARY[cat];
-      const len = (currentMode === 'svg') ? lib.length : NEURO_BASES;
+      // Use 4 for gallery, 2 for parts due to generation limits
+      let len = lib.length;
+      if (currentMode === 'gallery') len = 4;
+      if (currentMode === 'collage') len = 2;
       const i = draft[cat] % len;
       
       const thumbEl = document.getElementById(`fr-thumb-${cat}`);
       if (thumbEl) {
         if (currentMode === 'svg') {
           thumbEl.innerHTML = FaceParts.renderThumb(cat, i, colors);
-        } else {
-          const bgId = (draft[cat] % NEURO_BASES) + 1;
+        } else if (currentMode === 'gallery') {
+          const bgId = i + 1;
           thumbEl.innerHTML = `<div style="width:100%; height:100%; border-radius:4px; background-image:url('assets/neuro/base_${bgId}.jpg'); background-size:cover; background-position:center;"></div>`;
+        } else if (currentMode === 'collage') {
+          const bgId = i + 1;
+          thumbEl.innerHTML = `<div style="width:100%; height:100%; border-radius:4px; background-color:#fff; background-image:url('assets/neuro/parts/${cat}_${bgId}.png'); background-size:contain; background-repeat:no-repeat; background-position:center;"></div>`;
         }
       }
       
