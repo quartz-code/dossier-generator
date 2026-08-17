@@ -70,6 +70,37 @@
     font-size: 16px;
 }
 
+.faction-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.faction-tab-btn {
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.faction-tab-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+}
+
+.faction-tab-btn.active {
+    background: rgba(124, 108, 240, 0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
 .controls {
     display: flex;
     gap: 12px;
