@@ -66,9 +66,9 @@ let currentFaction = 'germany';
 
 function initGenerator() {
     // Gender tabs
-    document.querySelectorAll('.control-btn').forEach(btn => {
+    document.querySelectorAll('.gender-tabs .control-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.gender-tabs .control-btn').forEach(b => b.classList.remove('active'));
             const target = e.currentTarget;
             target.classList.add('active');
             currentGender = target.dataset.gender;
@@ -77,9 +77,9 @@ function initGenerator() {
     });
 
     // Faction tabs
-    document.querySelectorAll('.faction-tab-btn').forEach(btn => {
+    document.querySelectorAll('.faction-tabs .control-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.faction-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.faction-tabs .control-btn').forEach(b => b.classList.remove('active'));
             const target = e.currentTarget;
             target.classList.add('active');
             currentFaction = target.dataset.faction;

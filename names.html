@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/names.css">
+    <link rel="stylesheet" href="css/names.css?v=2">
 </head>
 <body>
     <div class="names-screen-wrapper">
@@ -23,13 +23,13 @@
                 <p>Быстрый подбор имён и фамилий для персонажей</p>
             </header>
 
-            <div class="faction-tabs" style="display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
-                <button class="faction-tab-btn active" data-faction="germany">Германия</button>
-                <button class="faction-tab-btn" data-faction="usa">США</button>
-                <button class="faction-tab-btn" data-faction="ussr">СССР</button>
+            <div class="controls faction-tabs">
+                <button class="control-btn faction-tab-btn active" data-faction="germany">Германия</button>
+                <button class="control-btn faction-tab-btn" data-faction="usa">США</button>
+                <button class="control-btn faction-tab-btn" data-faction="ussr">СССР</button>
             </div>
 
-            <div class="controls">
+            <div class="controls gender-tabs">
                 <button class="control-btn active" data-gender="all">Все</button>
                 <button class="control-btn" data-gender="male">Мужские</button>
                 <button class="control-btn" data-gender="female">Женские</button>
@@ -49,6 +49,6 @@
         </div>
     </div>
 
-    <script src="js/names.js"></script>
+    <script src="js/names.js?v=2"></script>
 </body>
 </html>
