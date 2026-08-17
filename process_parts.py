@@ -10,6 +10,11 @@ def make_transparent(img_path):
     data = np.array(img)
     
     alpha = 255 - data
+    # To remove faint grays completely:
+    alpha = alpha.astype(np.float32)
+    alpha[alpha < 50] = 0
+    alpha = np.clip(alpha * 1.5, 0, 255).astype(np.uint8)
+    
     out = np.zeros((data.shape[0], data.shape[1], 4), dtype=np.uint8)
     out[..., 0] = 0 # R
     out[..., 1] = 0 # G

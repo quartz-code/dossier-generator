@@ -103,11 +103,10 @@ const Fotorobot = (() => {
       `;
     } else if (currentMode === 'collage') {
       // New Constructor mode
-      const NEURO_PARTS = 2; // Due to API quota limits we only have 2 options for parts right now
-      const bFace = (draft.face % NEURO_PARTS) + 1;
-      const bEyes = (draft.eyes % NEURO_PARTS) + 1;
-      const bNose = (draft.nose % NEURO_PARTS) + 1;
-      const bMouth = (draft.mouth % NEURO_PARTS) + 1;
+      const bFace = (draft.face % 2) + 1; // Only 2 faces generated before quota
+      const bEyes = (draft.eyes % 6) + 1; // 6 eyes available
+      const bNose = (draft.nose % 6) + 1; // 6 noses available
+      const bMouth = (draft.mouth % 6) + 1; // 6 mouths available
       
       wrap.innerHTML = `
         <div class="fr-neuro-wrap">
@@ -142,10 +141,11 @@ const Fotorobot = (() => {
       }
       
       const lib = FaceParts.LIBRARY[cat];
-      // Use 4 for gallery, 2 for parts due to generation limits
       let len = lib.length;
       if (currentMode === 'gallery') len = 4;
-      if (currentMode === 'collage') len = 2;
+      if (currentMode === 'collage') {
+        len = (cat === 'face') ? 2 : 6;
+      }
       const i = draft[cat] % len;
       
       const thumbEl = document.getElementById(`fr-thumb-${cat}`);
