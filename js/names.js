@@ -1,28 +1,28 @@
 const germanNames = {
     male: [
-        "Hans", "Karl", "Wilhelm", "Friedrich", "Heinrich", "Otto", "Ernst", "Walter", "Kurt", "Albert", 
-        "Fritz", "Erich", "Paul", "Richard", "Josef", "Hermann", "Werner", "Gustav", "Arthur", "Max", 
-        "Rudolf", "Emil", "Johannes", "Georg", "Franz", "Robert", "Eduard", "Bernhard", "Hugo", "Julius", 
-        "Viktor", "Anton", "Oskar", "Martin", "Ewald", "Ludwig", "Alfred", "August", "Helmut", "Gottfried",
-        "Dietrich", "Ulrich", "Klaus", "Dieter", "Wolfgang", "Heinz", "Gerhard", "Günter", "Manfred", "Jürgen",
-        "Joachim", "Rolf", "Horst", "Ralf", "Knut", "Bruno", "Ferdinand", "Felix", "Leonhard", "Sebastian"
+        "Ганс", "Карл", "Вильгельм", "Фридрих", "Генрих", "Отто", "Эрнст", "Вальтер", "Курт", "Альберт", 
+        "Фриц", "Эрих", "Пауль", "Рихард", "Йозеф", "Герман", "Вернер", "Густав", "Артур", "Макс", 
+        "Рудольф", "Эмиль", "Иоганнес", "Георг", "Франц", "Роберт", "Эдуард", "Бернгард", "Гуго", "Юлиус", 
+        "Виктор", "Антон", "Оскар", "Мартин", "Эвальд", "Людвиг", "Альфред", "Август", "Гельмут", "Готфрид",
+        "Дитрих", "Ульрих", "Клаус", "Дитер", "Вольфганг", "Хайнц", "Герхард", "Гюнтер", "Манфред", "Юрген",
+        "Иоахим", "Рольф", "Хорст", "Ральф", "Кнут", "Бруно", "Фердинанд", "Феликс", "Леонгард", "Себастьян"
     ],
     female: [
-        "Anna", "Maria", "Martha", "Frieda", "Emma", "Margarete", "Marie", "Bertha", "Elisabeth", "Klara", 
-        "Else", "Johanne", "Gertrud", "Minna", "Helene", "Ida", "Luise", "Erna", "Berta", "Hedwig", 
-        "Auguste", "Johanna", "Emilie", "Käthe", "Lina", "Margaretha", "Elise", "Magdalene", "Dorothea", "Wilhelmine", 
-        "Charlotte", "Elfriede", "Rosa", "Mathilde", "Agnes", "Pauline", "Lotte", "Clara", "Sophie", "Irene",
-        "Hildegard", "Ilse", "Gerda", "Ursula", "Inge", "Liselotte", "Edith", "Ruth", "Gisela", "Christa",
-        "Helga", "Renate", "Karin", "Monika", "Brigitte", "Ute", "Petra", "Sabine", "Susanne", "Eva"
+        "Анна", "Мария", "Марта", "Фрида", "Эмма", "Маргарета", "Мария", "Берта", "Элизабет", "Клара", 
+        "Эльза", "Иоганна", "Гертруда", "Минна", "Хелена", "Ида", "Луиза", "Эрна", "Берта", "Хедвиг", 
+        "Августа", "Иоганна", "Эмилия", "Кете", "Лина", "Маргарета", "Элиза", "Магдалена", "Доротея", "Вильгельмина", 
+        "Шарлотта", "Эльфрида", "Роза", "Матильда", "Агнес", "Паулина", "Лотта", "Клара", "София", "Ирена",
+        "Хильдегарда", "Ильза", "Герда", "Урсула", "Инга", "Лизелотта", "Эдит", "Рут", "Гизела", "Криста",
+        "Хельга", "Рената", "Карин", "Моника", "Бригитта", "Ута", "Петра", "Сабина", "Сюзанна", "Ева"
     ],
     surname: [
-        "Müller", "Schmidt", "Schneider", "Fischer", "Weber", "Meyer", "Wagner", "Becker", "Schulz", "Hoffmann", 
-        "Schäfer", "Koch", "Bauer", "Richter", "Klein", "Wolf", "Schröder", "Neumann", "Braun", "Werner", 
-        "Heinrich", "Krause", "Meier", "Sommer", "Lehmann", "Horn", "Günther", "Keller", "Köhler", "Schlosser", 
-        "Frank", "Schubert", "Roth", "Beck", "Haas", "Lorenz", "Kraus", "Stein", "Jäger", "Otto", 
-        "Lange", "Böhm", "Heinrich", "Krämer", "Vogel", "Hofmann", "Fuchs", "Peters", "Lang", "Schmitt",
-        "Zimmermann", "Krüger", "Huber", "Kaiser", "Möller", "Schmid", "Kühn", "Ziegler", "Busch", "Pohl",
-        "Werner", "Graf", "Beyer", "Seidel", "Kramer", "Scholz", "Haas", "Dietrich", "Engel", "Hermann"
+        "Мюллер", "Шмидт", "Шнайдер", "Фишер", "Вебер", "Майер", "Вагнер", "Беккер", "Шульц", "Гофман", 
+        "Шефер", "Кох", "Бауэр", "Рихтер", "Кляйн", "Вольф", "Шрёдер", "Нойман", "Браун", "Вернер", 
+        "Генрих", "Краузе", "Майер", "Зоммер", "Леман", "Горн", "Гюнтер", "Келлер", "Кёлер", "Шлоссер", 
+        "Франк", "Шуберт", "Рот", "Бек", "Хаас", "Лоренц", "Краус", "Штайн", "Егер", "Отто", 
+        "Ланге", "Бём", "Генрих", "Кремер", "Фогель", "Хофман", "Фукс", "Петерс", "Ланг", "Шмитт",
+        "Циммерман", "Крюгер", "Хубер", "Кайзер", "Мёллер", "Шмид", "Кюн", "Циглер", "Буш", "Поль",
+        "Вернер", "Граф", "Байер", "Зайдель", "Крамер", "Шольц", "Хаас", "Дитрих", "Энгель", "Герман"
     ]
 };
 
